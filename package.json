@@ -1,0 +1,37 @@
+{
+  "name": "encyclopontus",
+  "version": "0.1.0",
+  "description": "My Digital Garden",
+  "main": "index.html",
+  "scripts": {
+    "server": "live-server",
+    "tailwind": "tailwindcss -i ./src/styles.css -o ./src/static/stylesheet.css --minify --watch",
+    "bumpPatch": "npm version patch --git-tag-version false",
+    "bumpMinor": "npm version minor --git-tag-version false",
+    "bumpMajor": "npm version major --git-tag-version false"
+  },
+  "devDependencies": {
+    "@tailwindcss/forms": "^0.5.7",
+    "live-server": "^1.2.2",
+    "prettier": "^3.1.1",
+    "prettier-plugin-tailwindcss": "^0.5.11",
+    "tailwindcss": "^3.4.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bondii/Encyclopontus.git"
+  },
+  "keywords": [
+    "digital garden",
+    "encyclopedia",
+    "Bondi",
+    "Psyontupsy",
+    "Pontus Eriksson"
+  ],
+  "author": "Pontus Eriksson",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bondii/Encyclopontus/issues"
+  },
+  "homepage": "https://bondii.github.io/Encyclopontus"
+}
