@@ -3,29 +3,83 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Encyclopontus</title>
+    <title>Encyclopontus | Digital Garden</title>
     <script src="/static/htmx.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/static/stylesheet.css">
+    <link rel="stylesheet" type="text/css" href="src/static/stylesheet.css" />
+    <!--<script src="https://cdn.tailwindcss.com"></script>-->
   </head>
-  <body class="bg-gray-900 text-gray-200">
-    <header class="text-center p-6 bg-purple-500 text-white">
-      <h1 class="text-3xl font-bold">Welcome to my Digital Garden</h1>
-      <p>Explore, get to know me, and watch the garden grow!</p>
-    </header>
+  <body class="bg-slate-900 text-slate-300">
+    <div class="flex flex-col md:flex-row min-h-screen">
+      <aside class="w-1/5 bg-slate-900 text-violet-500 p-6 border-r border-r-violet-950">
+        <header class="text-center p-6text-white mb-6 border-b h-14 border-b-violet-950">
+          <a href="/">
+            <h2 class="text-3xl font-bold">Encyclopontus</h2>
+          </a>
+        </header>
 
-    <main class="container mx-auto p-6">
-      <section>
-        <h2 class="text-2xl font-semibold mb-4">About This Project</h2>
-        <p>
-          This is a starting point for my <b>Digital Garden</b>.<br />
-          Here, I aim to find a space for self-expression through writing,
-          UX design, and aesthetically pleasing code.
-        </p>
-        <p>
-          This will never be finished, but is rather meant to be an organically
-          evolving outlet for my thoughts.<br>
-          Thus, I hereby present it as-is as of right now - <b>no more, no less</b>.
-        </p>
-      </section>
+        <nav>
+          <ul>
+            <li>
+              <a
+                href="#example"
+                class="block py-2 hover:bg-purple-800"
+                hx-trigger="click"
+                hx-get="/src/example.html"
+                hx-target="#main-content"
+                hx-swap="innerHTML"
+              >
+                Example page
+              </a>
+            </li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main id="main-content" class="flex-1 container mx-auto p-6">
+        <section>
+          <h2 class="text-2xl font-semibold mb-4">About This Project</h2>
+          <p>
+            This is a starting point for my <b>Digital Garden</b>.<br />
+            Here, I aim to find a space for self-expression through writing, UX design,
+            and aesthetically pleasing code.
+          </p>
+          <p>
+            This will never be finished, but is rather meant to be an organically evolving
+            outlet for my thoughts.<br />
+            Thus, I hereby present it as-is as of right now - <b>no more, no less</b>.
+          </p>
+        </section>
+      </main>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        let contentMap = {
+          home: 'index.html',
+          example: 'src/example.html',
+        }
+
+        loadContentFromHash(contentMap)
+
+        window.addEventListener(
+          'hashchange',
+          function () {
+            loadContentFromHash(contentMap)
+          },
+          false,
+        )
+      })
+
+      function loadContentFromHash(contentMap) {
+        let id = window.location.hash.substring(1)
+        if (id && contentMap[id]) {
+          loadContent(id, contentMap[id])
+        }
+      }
+
+      function loadContent(id, page) {
+        htmx.ajax('GET', page, '#main-content')
+      }
+    </script>
   </body>
 </html>
