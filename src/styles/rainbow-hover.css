@@ -1,0 +1,60 @@
+.rainbow-hover span {
+  transition: color 1.5s ease-in-out;
+}
+.rainbow-hover span:hover,
+.rainbow-active {
+  transition: color 0.1s ease-in-out;
+}
+
+.rainbow-hover span:nth-child(1):hover,
+.rainbow-active:nth-child(1) {
+  color: #facc15;
+}
+.rainbow-hover span:nth-child(2):hover,
+.rainbow-active:nth-child(2) {
+  color: #84cc16;
+}
+.rainbow-hover span:nth-child(3):hover,
+.rainbow-active:nth-child(3) {
+  color: #16a34a;
+}
+.rainbow-hover span:nth-child(4):hover,
+.rainbow-active:nth-child(4) {
+  color: #14b8a6;
+}
+.rainbow-hover span:nth-child(5):hover,
+.rainbow-active:nth-child(5) {
+  color: #0ea5e9;
+}
+.rainbow-hover span:nth-child(6):hover,
+.rainbow-active:nth-child(6) {
+  color: #2563eb;
+}
+.rainbow-hover span:nth-child(7):hover,
+.rainbow-active:nth-child(7) {
+  color: #4338ca;
+}
+.rainbow-hover span:nth-child(8):hover,
+.rainbow-active:nth-child(8) {
+  color: #5b21b6;
+}
+.rainbow-hover span:nth-child(9):hover,
+.rainbow-active:nth-child(9) {
+  color: #7e22ce;
+}
+.rainbow-hover span:nth-child(10):hover,
+.rainbow-active:nth-child(10) {
+  color: #d946ef;
+}
+.rainbow-hover span:nth-child(11):hover,
+.rainbow-active:nth-child(11) {
+  color: #ec4899;
+}
+.rainbow-hover span:nth-child(12):hover,
+.rainbow-active:nth-child(12) {
+  color: #dc2626;
+}
+.rainbow-hover span:nth-child(13):hover,
+.rainbow-active:nth-child(13) {
+  color: #f97316;
+}

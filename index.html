@@ -4,17 +4,25 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Encyclopontus | Digital Garden</title>
-    <script src="/static/htmx.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="src/static/stylesheet.css" />
+    <script src="static/htmx.min.js"></script>
     <!--<script src="https://cdn.tailwindcss.com"></script>-->
+    <link rel="stylesheet" type="text/css" href="static/stylesheet.css" />
+    <link rel="stylesheet" type="text/css" href="src/styles/rainbow-hover.css" />
   </head>
   <body class="bg-slate-900 text-slate-300">
     <div class="flex flex-col md:flex-row min-h-screen">
-      <aside class="w-1/5 bg-slate-900 text-violet-500 p-6 border-r border-r-violet-950">
-        <header class="text-center p-6text-white mb-6 border-b h-14 border-b-violet-950">
-          <a href="/">
-            <h2 class="text-3xl font-bold">Encyclopontus</h2>
-          </a>
+      <aside class="w-1/5 bg-slate-900 p-6 border-r border-violet-950">
+        <header class="text-center p-0 mb-6 border-b border-violet-950 h-14">
+          <h2 class="text-3xl font-bold rainbow-hover text-violet-800">
+            <a href="">
+              <!-- What do you _mean_ "not aesthetically pleasing"??
+                   Make a PR for a more elegant solution, then!.. ;*
+              -->
+              <span>E</span><span>n</span><span>c</span><span>y</span><span>c</span
+              ><span>l</span><span>o</span><span>p</span><span>o</span><span>n</span
+              ><span>t</span><span>u</span><span>s</span>
+            </a>
+          </h2>
         </header>
 
         <nav>
@@ -24,7 +32,7 @@
                 href="#example"
                 class="block py-2 hover:bg-purple-800"
                 hx-trigger="click"
-                hx-get="/src/example.html"
+                hx-get="src/example.html"
                 hx-target="#main-content"
                 hx-swap="innerHTML"
               >
@@ -80,6 +88,21 @@
       function loadContent(id, page) {
         htmx.ajax('GET', page, '#main-content')
       }
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const spans = document.querySelectorAll('.rainbow-hover span')
+        const pSpan = spans[7] // p as in Pontus B-)
+
+        pSpan.addEventListener('mouseover', function () {
+          spans.forEach(span => span.classList.add('rainbow-active'))
+        })
+
+        pSpan.addEventListener('mouseout', function () {
+          spans.forEach(span => span.classList.remove('rainbow-active'))
+        })
+      })
     </script>
   </body>
 </html>

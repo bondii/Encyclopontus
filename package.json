@@ -5,7 +5,7 @@
   "main": "index.html",
   "scripts": {
     "server": "live-server",
-    "tailwind": "tailwindcss -i ./src/styles.css -o ./src/static/stylesheet.css --minify --watch",
+    "tailwind": "tailwindcss -i ./src/styles/styles.css -o ./static/stylesheet.css --minify --watch",
     "bumpPatch": "npm version patch --git-tag-version false",
     "bumpMinor": "npm version minor --git-tag-version false",
     "bumpMajor": "npm version major --git-tag-version false"
