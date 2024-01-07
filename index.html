@@ -9,12 +9,12 @@
     <link rel="stylesheet" type="text/css" href="static/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="src/styles/rainbow-hover.css" />
   </head>
-  <body class="bg-slate-900 text-slate-300">
-    <div class="flex flex-col md:flex-row min-h-screen">
-      <aside class="w-1/5 bg-slate-900 p-6 border-r border-violet-950">
-        <header class="text-center p-0 mb-6 border-b border-violet-950 h-14">
-          <h2 class="text-3xl font-bold rainbow-hover text-violet-800">
-            <a href="">
+  <body class="bg-slate-900 text-violet-50">
+    <div class="flex flex-col min-h-screen md:flex-row">
+      <aside class="w-1/5 p-6 border-r bg-slate-900">
+        <header class="p-0 mb-6 text-center border-b h-14">
+          <h2 class="text-3xl font-bold rainbow-hover">
+            <a class="text-violet-800" href="">
               <!-- What do you _mean_ "not aesthetically pleasing"??
                    Make a PR for a more elegant solution, then!.. ;*
               -->
@@ -26,26 +26,47 @@
         </header>
 
         <nav>
-          <ul>
+          <ul class="list-none">
             <li>
               <a
-                href="#example"
-                class="block py-2 hover:bg-purple-800"
-                hx-trigger="click"
-                hx-get="src/example.html"
+                href="#mindful-routines"
+                hx-get="src/pages/mindful-routines.html"
                 hx-target="#main-content"
-                hx-swap="innerHTML"
               >
-                Example page
+                Mindfulness vs. Routine
               </a>
+            </li>
+
+            <li>
+              <a href="#rave" hx-get="src/pages/rave.html" hx-target="#main-content">
+                Rave
+              </a>
+            </li>
+
+            <li>
+              <a
+                href="#temperance"
+                hx-get="src/pages/temperance.html"
+                hx-target="#main-content"
+              >
+                Temperance
+              </a>
+
+              <ul class="list-none">
+                <li>
+                  <a href="#snus" hx-get="src/pages/snus.html" hx-target="#main-content">
+                    Snus
+                  </a>
+                </li>
+              </ul>
             </li>
           </ul>
         </nav>
       </aside>
 
-      <main id="main-content" class="flex-1 container mx-auto p-6">
+      <main id="main-content" class="container flex-1 p-6 ml-0 mr-auto max-w-[1150px]">
         <section>
-          <h2 class="text-2xl font-semibold mb-4">About This Project</h2>
+          <h2 class="mb-4 text-2xl font-semibold">About This Project</h2>
           <p>
             This is a starting point for my <b>Digital Garden</b>.<br />
             Here, I aim to find a space for self-expression through writing, UX design,
@@ -64,7 +85,10 @@
       document.addEventListener('DOMContentLoaded', function () {
         let contentMap = {
           home: 'index.html',
-          example: 'src/example.html',
+          'mindful-routines': 'src/pages/mindful-routines.html',
+          rave: 'src/pages/rave.html',
+          temperance: 'src/pages/temperance.html',
+          snus: 'src/pages/snus.html',
         }
 
         loadContentFromHash(contentMap)
