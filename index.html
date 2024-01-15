@@ -29,6 +29,16 @@
           <ul class="list-none">
             <li>
               <a
+                href="#meditation"
+                hx-get="src/pages/meditation.html"
+                hx-target="#main-content"
+              >
+                Meditation
+              </a>
+            </li>
+
+            <li>
+              <a
                 href="#mindful-routines"
                 hx-get="src/pages/mindful-routines.html"
                 hx-target="#main-content"
@@ -85,6 +95,7 @@
       document.addEventListener('DOMContentLoaded', function () {
         let contentMap = {
           home: 'index.html',
+          meditation: 'src/pages/meditation.html',
           'mindful-routines': 'src/pages/mindful-routines.html',
           rave: 'src/pages/rave.html',
           temperance: 'src/pages/temperance.html',
