@@ -27,48 +27,74 @@
 
         <nav>
           <ul class="list-none">
-            <li>
-              <a
-                href="#meditation"
-                hx-get="src/pages/meditation.html"
-                hx-target="#main-content"
-              >
-                Meditation
+            <li class="pb-2 mb-4 border-b">
+              <a href="#liveography" hx-target="#main-content" class="font-bold">
+                Live Autobiography
               </a>
+
+              <ul class="border-l-0">
+                <li class="pb-2">
+                  <a href="#liveography/abroad-2024" hx-target="#main-content">
+                    Abroad Living 2024
+                  </a>
+                  <ul class="list-none">
+                    <li>
+                      <a
+                        href="#liveography/abroad-2024/berlin-2023"
+                        hx-target="#main-content"
+                      >
+                        Berlin <i class="float-right text-sm">2023-11-14 ~> 2024-01-09</i>
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="#liveography/abroad-2024/barcelona-2024"
+                        hx-target="#main-content"
+                      >
+                        Barcelona
+                        <i class="float-right text-sm">2024-01-09 -> 2024-02-13</i>
+                      </a>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+
+            <!-- -------- -->
+
+            <li>
+              <a href="#meditation" hx-target="#main-content"> Meditation </a>
             </li>
 
             <li>
-              <a
-                href="#mindful-routines"
-                hx-get="src/pages/mindful-routines.html"
-                hx-target="#main-content"
-              >
+              <a href="#mindful-routines" hx-target="#main-content">
                 Mindfulness vs. Routine
               </a>
             </li>
 
             <li>
-              <a href="#rave" hx-get="src/pages/rave.html" hx-target="#main-content">
-                Rave
-              </a>
+              <a href="#rave" hx-target="#main-content"> Rave </a>
             </li>
 
             <li>
-              <a
-                href="#temperance"
-                hx-get="src/pages/temperance.html"
-                hx-target="#main-content"
-              >
-                Temperance
-              </a>
+              <a href="#sociodrink" hx-target="#main-content">Sociodrinking</a>
+            </li>
+
+            <li>
+              <a href="#temperance" hx-target="#main-content"> Temperance </a>
 
               <ul class="list-none">
                 <li>
-                  <a href="#snus" hx-get="src/pages/snus.html" hx-target="#main-content">
-                    Snus
-                  </a>
+                  <a href="#temperance/snus" hx-target="#main-content"> Snus </a>
                 </li>
               </ul>
+            </li>
+
+            <!-- -------- -->
+
+            <li class="pt-2 mt-4 border-t">
+              <a href="#wishlist" hx-target="#main-content"> Wishlist / Seeds </a>
             </li>
           </ul>
         </nav>
@@ -85,43 +111,81 @@
           <p>
             This will never be finished, but is rather meant to be an organically evolving
             outlet for my thoughts.<br />
-            Thus, I hereby present it as-is as of right now - <b>no more, no less</b>.
+            Thus, I hereby present it as is right now - <b>no more, no less</b>.
+          </p>
+        </section>
+
+        <section class="pt-2 border-t">
+          <p>
+            The Garden is not structured to be read in a linear fashion, but rather
+            explored by a curious mind.<br />
+            Most pages can be reached from the Navigation Tree to the left, but some are
+            loose leaves blowing in the wind, only found via hyperlinks from other pages.
+          </p>
+          <p class="mb-1">
+            Most pages are marked with one of the following statuses to show how far
+            they've grown:
+          </p>
+          <ul class="list-none">
+            <li>🌱 - Seedling, just beginning to see the light of day</li>
+            <li>🪴 - Planted pot, living a life of its own but not very mature yet</li>
+            <li>🌲 - Tree, with roots enough to try the trial of time</li>
+          </ul>
+        </section>
+
+        <section class="pt-2 border-t">
+          <p>
+            The site is, as of yet, written with HTMX and Tailwind CSS and is hosted on
+            GitHub Pages as static files only.<br />
+            The source code is freely available on my
+            <a href="https://github.com/bondii/Encyclopontus">GitHub repo</a>.
           </p>
         </section>
       </main>
     </div>
 
     <script>
-      document.addEventListener('DOMContentLoaded', function () {
-        let contentMap = {
-          home: 'index.html',
-          meditation: 'src/pages/meditation.html',
-          'mindful-routines': 'src/pages/mindful-routines.html',
-          rave: 'src/pages/rave.html',
-          temperance: 'src/pages/temperance.html',
-          snus: 'src/pages/snus.html',
+      function parsePageName(str) {
+        const lastSlashIndex = str.lastIndexOf('/')
+        if (lastSlashIndex === -1) {
+          // No slash found, return the whole string or handle as needed
+          return str
         }
-
-        loadContentFromHash(contentMap)
-
-        window.addEventListener(
-          'hashchange',
-          function () {
-            loadContentFromHash(contentMap)
-          },
-          false,
-        )
-      })
-
-      function loadContentFromHash(contentMap) {
-        let id = window.location.hash.substring(1)
-        if (id && contentMap[id]) {
-          loadContent(id, contentMap[id])
-        }
+        return str.substring(lastSlashIndex + 1)
       }
 
-      function loadContent(id, page) {
-        htmx.ajax('GET', page, '#main-content')
+      document.addEventListener('DOMContentLoaded', function () {
+        loadContentFromHash()
+        window.addEventListener('hashchange', loadContentFromHash, false)
+      })
+
+      function loadContentFromHash() {
+        let hash = window.location.hash.substring(1)
+
+        if (!hash) {
+          return // index
+        }
+
+        const url = 'http://example.com/path/to/resource'
+        const pageName = parsePageName(hash)
+        let indexPath = `src/pages/${hash}/${pageName}.html`
+        let hashPath = `src/pages/${hash}.html`
+
+        fetch(indexPath)
+          .then(response => {
+            if (response.ok) {
+              loadContent(indexPath)
+            } else {
+              loadContent(hashPath)
+            }
+          })
+          .catch(() => {
+            loadContent('index.html') // ToDoo: Replace with error page
+          })
+      }
+
+      function loadContent(pagePath) {
+        htmx.ajax('GET', pagePath, '#main-content')
       }
     </script>
 

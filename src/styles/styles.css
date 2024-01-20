@@ -11,11 +11,32 @@ section {
   @apply mb-6;
 }
 
+h1 {
+  @apply text-violet-500;
+  @apply mb-3;
+  @apply text-4xl;
+  @apply font-semibold;
+}
+
 h2 {
   @apply text-violet-400;
   @apply mb-2;
+  @apply text-3xl;
+  @apply font-semibold;
+}
+
+h3 {
+  @apply text-violet-300;
+  @apply mb-2;
   @apply text-xl;
   @apply font-semibold;
+}
+
+h4 {
+  @apply text-violet-200;
+  @apply mb-1;
+  @apply text-lg;
+  @apply font-bold;
 }
 
 b {
@@ -36,8 +57,15 @@ ul {
   @apply list-disc;
   @apply pl-4;
 }
-li ul {
+nav ul {
+  @apply list-none;
+}
+nav ul li {
+  @apply list-none;
+}
+nav ul li ul {
   @apply border-l;
+  @apply list-none;
 }
 li ul li a {
   @apply p-0;
