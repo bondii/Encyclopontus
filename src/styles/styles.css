@@ -82,3 +82,30 @@ blockquote {
 blockquote b {
   @apply text-violet-500;
 }
+
+/* Hidden by default on mobile */
+@media (max-width: 768px) {
+  aside {
+    transform: translateX(-100vw);
+    transition: transform 0.3s ease-in-out;
+  }
+  aside.active {
+    transform: translateX(0);
+  }
+
+  #main-content {
+    transform: translateX(100vw);
+    transition: transform 0.3s ease-in-out;
+  }
+  #main-content.active {
+    transform: translateX(0);
+  }
+
+  #menu-toggle {
+    transform: rotate(0);
+    transition: transform 0.3s ease-in-out;
+  }
+  #menu-toggle.active {
+    transform: rotate(90deg);
+  }
+}

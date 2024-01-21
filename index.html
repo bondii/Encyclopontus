@@ -10,8 +10,11 @@
     <link rel="stylesheet" type="text/css" href="src/styles/rainbow-hover.css" />
   </head>
   <body class="bg-slate-900 text-violet-50">
-    <div class="flex flex-col min-h-screen md:flex-row">
-      <aside class="w-1/5 p-6 border-r bg-slate-900">
+    <div class="h-screen overflow-x-hidden md:flex-row md:flex">
+      <aside
+        id="sidebar"
+        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full md:flex-1 min-w-48 md:transform-none md:translate-x-0 md:w-1/5 bg-slate-900 md:relative md:h-auto"
+      >
         <header class="p-0 mb-6 text-center border-b h-14">
           <h2 class="text-3xl font-bold rainbow-hover">
             <a class="text-violet-800" href="">
@@ -43,8 +46,9 @@
                         href="#liveography/abroad-2024/berlin-2023"
                         hx-target="#main-content"
                       >
-                        Berlin <i class="float-right text-sm">2023-11-14 ~> 2024-01-09</i>
-                      </a>
+                        Berlin
+                        <i class="float-right text-sm">2023-11-14 ~> 2024-01-09</i></a
+                      >
                     </li>
 
                     <li>
@@ -118,7 +122,13 @@
         </nav>
       </aside>
 
-      <main id="main-content" class="container flex-1 p-6 ml-0 mr-auto max-w-[1150px]">
+      <!--
+      <main
+        id="main-content"
+        class="active container flex-1 p-6 ml-0 mr-auto max-w-[1150px]"
+      >
+      -->
+      <main id="main-content" class="flex-1 p-6 overflow-y-auto active max-w-[1150px]">
         <section>
           <h2 class="mb-4 text-2xl font-semibold">About This Project</h2>
           <p>
@@ -170,6 +180,15 @@
       </main>
     </div>
 
+    <div class="fixed z-20 transform -translate-x-1/2 bottom-2 left-1/2">
+      <button
+        id="menu-toggle"
+        class="w-6 h-6 text-center text-purple-700 rounded-md bg-fuchsia-950"
+      >
+        <div>☰</div>
+      </button>
+    </div>
+
     <script>
       function parsePageName(str) {
         const lastSlashIndex = str.lastIndexOf('/')
@@ -213,6 +232,28 @@
       function loadContent(pagePath) {
         htmx.ajax('GET', pagePath, '#main-content')
       }
+    </script>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const menuToggle = document.getElementById('menu-toggle')
+        const sidebar = document.querySelector('aside')
+
+        const togglers = [menuToggle, sidebar]
+
+        // ToDo: Make selector of a CSS class
+        const toggledElements = [
+          menuToggle,
+          sidebar,
+          document.getElementById('main-content'),
+        ]
+
+        togglers.forEach(toggleElement =>
+          toggleElement.addEventListener('click', function () {
+            toggledElements.forEach(element => element.classList.toggle('active'))
+          }),
+        )
+      })
     </script>
 
     <script>
