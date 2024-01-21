@@ -13,7 +13,7 @@
     <div class="h-screen overflow-x-hidden md:flex-row md:flex">
       <aside
         id="sidebar"
-        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full md:flex-1 min-w-48 md:transform-none md:translate-x-0 md:w-1/5 bg-slate-900 md:relative md:h-auto"
+        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full border-r flex-0 md:w-80 md:translate-x-0 bg-slate-900 md:relative md:h-auto"
       >
         <header class="p-0 mb-6 text-center border-b h-14">
           <h2 class="text-3xl font-bold rainbow-hover">
@@ -47,7 +47,7 @@
                         hx-target="#main-content"
                       >
                         Berlin
-                        <i class="float-right text-sm">2023-11-14 ~> 2024-01-09</i></a
+                        <i class="float-right mt-1 text-sm">23-11-14 ~> 24-01-09</i></a
                       >
                     </li>
 
@@ -57,7 +57,7 @@
                         hx-target="#main-content"
                       >
                         Barcelona
-                        <i class="float-right text-sm">2024-01-09 -> 2024-02-13</i>
+                        <i class="float-right mt-1 text-sm">24-01-09 -> 24-02-13</i>
                       </a>
                     </li>
                   </ul>
@@ -180,7 +180,7 @@
       </main>
     </div>
 
-    <div class="fixed z-20 transform -translate-x-1/2 bottom-2 left-1/2">
+    <div class="fixed z-20 transform -translate-x-1/2 bottom-2 left-1/2 md:hidden">
       <button
         id="menu-toggle"
         class="w-6 h-6 text-center text-purple-700 rounded-md bg-fuchsia-950"
