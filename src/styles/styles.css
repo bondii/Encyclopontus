@@ -73,10 +73,10 @@ li ul li a {
 
 blockquote {
   @apply text-violet-400;
-  @apply border-l-4;
   @apply border-violet-900;
+  @apply border-l-4;
   @apply pl-4;
-  @apply italic;
+  @apply font-organic;
 }
 
 blockquote b {

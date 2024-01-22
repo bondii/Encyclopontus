@@ -24,9 +24,9 @@ npm run watch:tailwind
 
 New to Tailwind? You're going to love it! Start reading here: [Tailwind CSS - Utility-First Fundamentals](https://tailwindcss.com/docs/utility-first)
 
-## HTMX
+## htmx
 
-HTMX allows you to access AJAX, CSS Transitions, WebSockets and Server Sent Events directly in HTML, without having to write any JavaScript. To get started, familiarize yourself with the HTMX syntax and attributes through HTMX documentation:
+htmx allows you to access AJAX, CSS Transitions, WebSockets and Server Sent Events directly in HTML, without having to write any JavaScript. To get started, familiarize yourself with the htmx syntax and attributes through htmx documentation:
 
 - [htmx in a Nutshell](https://htmx.org/docs/#introduction)
 - [htmx Reference](https://htmx.org/reference/)

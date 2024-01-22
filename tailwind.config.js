@@ -6,6 +6,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {},
+      fontFamily: {
+        organic: ['"Bad Script"', 'cursive'],
+      },
     },
   },
   plugins: [require('@tailwindcss/forms')],
