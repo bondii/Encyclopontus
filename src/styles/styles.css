@@ -12,14 +12,16 @@ article {
 }
 
 section {
-  @apply pb-4;
+  @apply py-3 my-3 border-y;
+}
+section + section {
+  @apply border-t-0;
+}
+h1 + section {
+  @apply border-t-0;
 }
 
-section:not(:last-of-type) {
-  @apply mb-8 border-b;
-}
-
-article h1:first-of-type {
+article h1:first-child {
   @apply font-bold;
   @apply pb-4 mb-8 border-b w-fit;
 }
@@ -36,7 +38,7 @@ h2 {
 
 h3 {
   @apply text-xl font-semibold text-violet-300;
-  @apply mb-1;
+  @apply my-1;
 }
 
 h4 {
@@ -49,7 +51,7 @@ b {
 }
 
 p {
-  @apply mt-4 mb-4;
+  @apply my-2;
 }
 
 a {

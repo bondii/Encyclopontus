@@ -15,6 +15,9 @@
   </head>
   <body class="bg-slate-900 text-violet-50">
     <div class="h-screen overflow-x-hidden md:flex-row md:flex">
+      <!--
+        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full md:flex-1 min-w-52 md:transform-none md:translate-x-0 md:max-w-1/5 bg-slate-900 md:relative md:h-auto"
+      -->
       <aside
         id="sidebar"
         class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full border-r flex-0 md:w-80 md:translate-x-0 bg-slate-900 md:relative md:h-auto"
@@ -111,6 +114,15 @@
             </li>
 
             <li>
+              <a href="#regrets" hx-target="#main-content">Regrets</a>
+              <ul>
+                <li>
+                  <a href="#regrets" hx-target="#main-content">Regrets</a>
+                </li>
+              </ul>
+            </li>
+
+            <li>
               <a href="#sociology" hx-target="#main-content">Sociology</a>
               <ul>
                 <li>
@@ -144,37 +156,35 @@
       >
       -->
       <main id="main-content" class="flex-1 p-6 overflow-y-auto active max-w-[1150px]">
-        <section>
-          <h1>
-            Welcome to my
-            <a class="font-semibold" href="https://www.reddit.com/r/DigitalGardens/"
-              ><code>Digital</code> <span class="font-organic">Garden</span></a
-            >!
-          </h1>
-          <p>
-            Here, I aim to find a space for self-expression through writing, quirky UX
-            design, and (hopefully) aesthetically pleasing code.<br />
-            It is heavily inspired by
-            <a href="https://wiki.nikiv.dev/">Everything I Know</a> by Nikita Voloboev, so
-            if you like Encyclopontus I bet you're going to love that site.
-          </p>
-          <p>
-            This will never be finished, but is rather meant to be an
-            <a href="https://joelhooks.com/digital-garden">
-              organically evolving outlet for my thoughts</a
-            >.<br />
-            Thus, I hereby present it as is right now - <b>no more, no less</b>.
-          </p>
-        </section>
+        <h1>
+          Welcome to my
+          <a class="font-semibold" href="https://www.reddit.com/r/DigitalGardens/"
+            ><code>Digital</code> <span class="font-organic">Garden</span></a
+          >!
+        </h1>
+        <p>
+          Here I aim to find a space for self-expression through writing, quirky UX
+          design, and (hopefully) aesthetically pleasing code.<br />
+          The starting point is heavily inspired by
+          <a href="https://wiki.nikiv.dev/">Everything I Know</a> by Nikita Voloboev, so
+          if you like Encyclopontus I bet you're going to love that site.
+        </p>
+        <p>
+          This will never be finished, but is rather meant to be an
+          <a href="https://joelhooks.com/digital-garden">
+            organically evolving outlet for my thoughts</a
+          >.<br />
+          Thus, I hereby present it as is right now - <b>no more, no less</b>.
+        </p>
 
-        <section class="pt-2 border-t">
+        <section>
           <p>
             The Garden is not structured to be read in a linear fashion, but rather
             explored by a curious mind.<br />
             Most pages can be reached from the navigation menu, but some are loose leaves
-            blowing in the wind, only found via hyperlinks from other pages.
+            blowing in the wind.
           </p>
-          <p class="mb-1">
+          <p>
             Most pages are marked with one of the following statuses to give a rough
             indication of how far they've grown in my eyes:
           </p>
@@ -192,12 +202,12 @@
           </ul>
         </section>
 
-        <section class="pt-2 border-t">
+        <section class="border-b-0">
           <p>
             For the choice of "tech stack", simplicity is the leading star. The vision
             from the start is a space where I can write formatted and hyperlinked texts
             without having to deal with dependency maintenance, compiling, building, and
-            deployment.<br />
+            deployment.
           </p>
           <p>
             The site is therefore, as of yet, written with
