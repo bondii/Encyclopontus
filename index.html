@@ -15,16 +15,13 @@
   </head>
   <body class="bg-slate-900 text-violet-50">
     <div class="h-screen overflow-x-hidden md:flex-row md:flex">
-      <!--
-        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full md:flex-1 min-w-52 md:transform-none md:translate-x-0 md:max-w-1/5 bg-slate-900 md:relative md:h-auto"
-      -->
       <aside
         id="sidebar"
         class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full border-r flex-0 md:w-80 md:translate-x-0 bg-slate-900 md:relative md:h-auto"
       >
         <header class="p-0 mb-6 text-center border-b h-14">
           <h2 class="text-3xl font-bold rainbow-hover">
-            <a class="text-violet-800" href="">
+            <a class="text-violet-800" href="#">
               <!-- What do you _mean_ "not aesthetically pleasing"??
                    Make a PR for a more elegant solution, then!.. ;*
               -->
@@ -38,52 +35,35 @@
         <nav>
           <ul class="list-none">
             <li class="pb-2 mb-4 border-b">
-              <a href="#liveography" hx-target="#main-content" class="font-bold">
-                Live Autobiography
-              </a>
+              <a href="#liveography" class="font-bold">Live Autobiography</a>
 
               <ul class="border-l-0">
                 <li class="pb-2">
-                  <a href="#liveography/abroad-2024" hx-target="#main-content">
-                    Abroad Living 2024
-                  </a>
+                  <a href="#liveography/abroad-2024">Abroad Living 2024</a>
                   <ul class="list-none">
                     <li>
-                      <a
-                        href="#liveography/abroad-2024/berlin-2023"
-                        hx-target="#main-content"
-                      >
+                      <a href="#liveography/abroad-2024/berlin-2023">
                         Berlin
                         <i class="float-right mt-1 text-sm">23-11-14 ~> 24-01-09</i></a
                       >
                     </li>
 
                     <li>
-                      <a
-                        href="#liveography/abroad-2024/barcelona-2024"
-                        hx-target="#main-content"
+                      <a href="#liveography/abroad-2024/barcelona-2024"
+                        >Barcelona
+                        <i class="float-right mt-1 text-sm">24-01-09 -> 24-02-13</i></a
                       >
-                        Barcelona
-                        <i class="float-right mt-1 text-sm">24-01-09 -> 24-02-13</i>
-                      </a>
                       <ul class="list-none">
                         <li>
-                          <a
-                            href="#liveography/abroad-2024/sprained-ankle"
-                            hx-target="#main-content"
-                            class="italic"
+                          <a href="#liveography/abroad-2024/sprained-ankle" class="italic"
+                            >Close to ending the entire #!</a
                           >
-                            Close to ending the entire #!
-                          </a>
                         </li>
                       </ul>
                     </li>
 
                     <li>
-                      <a
-                        href="#liveography/abroad-2024/porto-2024"
-                        hx-target="#main-content"
-                      >
+                      <a href="#liveography/abroad-2024/porto-2024">
                         Porto
                         <i class="float-right mt-1 text-sm">24-02-13 ~> 24-03-01</i></a
                       >
@@ -96,151 +76,64 @@
             <!-- -------- -->
 
             <li>
-              <a href="#meditation" hx-target="#main-content">Meditation</a>
+              <a href="#meditation">Meditation</a>
             </li>
 
             <li>
-              <a href="#mindful-routines" hx-target="#main-content">
-                Mindfulness vs. Routine
-              </a>
+              <a href="#mindful-routines"> Mindfulness vs. Routine </a>
             </li>
 
             <li>
-              <a href="#pontus" hx-target="#main-content">Pontus</a>
+              <a href="#pontus">Pontus</a>
               <ul>
                 <li>
-                  <a href="#pontus/past-pontus" hx-target="#main-content">Past Pontus</a>
+                  <a href="#pontus/past-pontus">Past Pontus</a>
                 </li>
                 <li>
-                  <a href="#pontus/future-pontus" hx-target="#main-content"
-                    >Future Pontus</a
-                  >
+                  <a href="#pontus/future-pontus">Future Pontus</a>
                 </li>
               </ul>
             </li>
 
             <li>
-              <a href="#rave" hx-target="#main-content">Rave</a>
+              <a href="#rave">Rave</a>
             </li>
 
             <li>
-              <a href="#regrets" hx-target="#main-content">Regrets</a>
+              <a href="#regrets">Regrets</a>
             </li>
 
             <li>
-              <a href="#sociology" hx-target="#main-content">Sociology</a>
+              <a href="#sociology">Sociology</a>
               <ul>
                 <li>
-                  <a href="#sociology/sociodrink" hx-target="#main-content"
-                    >Sociodrinking</a
-                  >
+                  <a href="#sociology/sociodrink">Sociodrinking</a>
                 </li>
               </ul>
             </li>
 
             <li>
-              <a href="#temperance" hx-target="#main-content">Temperance</a>
+              <a href="#temperance">Temperance</a>
               <ul class="list-none">
-                <li><a href="#temperance/snus" hx-target="#main-content">Snus</a></li>
+                <li>
+                  <a href="#temperance/snus">Snus</a>
+                </li>
               </ul>
             </li>
 
             <!-- -------- -->
 
             <li class="pt-2 mt-4 border-t">
-              <a href="#seeds" hx-target="#main-content">Seeds</a>
+              <a href="#seeds">Seeds</a>
             </li>
           </ul>
         </nav>
       </aside>
 
-      <!--
       <main
         id="main-content"
-        class="active container flex-1 p-6 ml-0 mr-auto max-w-[1150px]"
-      >
-      -->
-      <main id="main-content" class="flex-1 p-6 overflow-y-auto active max-w-[1150px]">
-        <h1>
-          Welcome to my
-          <a class="font-semibold" href="https://www.reddit.com/r/DigitalGardens/"
-            ><code>Digital</code> <span class="font-organic">Garden</span></a
-          >!
-        </h1>
-        <p>
-          Here I aim to find a space for self-expression through writing, quirky UX
-          design, and (hopefully) aesthetically pleasing code.<br />
-          The starting point is heavily inspired by
-          <a href="https://wiki.nikiv.dev/">Everything I Know</a> by Nikita Voloboev, so
-          if you like Encyclopontus I bet you're going to love that site.
-        </p>
-        <p>
-          This will never be finished, but is rather meant to be an
-
-          <a href="https://github.com/bondii/Encyclopontus/commits/"
-            >organically evolving</a
-          >
-          <a href="https://joelhooks.com/digital-garden">outlet for my thoughts</a>.<br />
-          Thus, I hereby present it as is right now - <b>no more, no less</b>.
-        </p>
-
-        <section>
-          <p>
-            The Garden is not structured to be read in a linear fashion, but rather
-            explored by a curious mind.<br />
-            Most pages can be reached from the navigation menu, but some are
-            <a href="#loose-leaves">loose leaves</a>
-            blowing in the wind.
-          </p>
-          <p>
-            Most pages are marked with one of the following statuses to give a rough
-            indication of how far they've grown in my eyes:
-          </p>
-          <ul class="list-none">
-            <li>
-              🌱 - Seedling, just beginning to see the light of day, with a lot of growing
-              to do!
-            </li>
-            <li>
-              🪴 - Planted pot, living a life of its own - nice enough to appreciate
-              having in the garden, but has not yet flowered or gotten its final roots
-              established
-            </li>
-            <li>🌲 - Tree, with roots enough to try the trial of time</li>
-          </ul>
-        </section>
-
-        <section class="border-b-0">
-          <p>
-            For the choice of "tech stack", simplicity is the leading star. The vision
-            from the start is a space where I can write formatted and hyperlinked texts
-            without having to deal with dependency maintenance, compiling, building, and
-            deployment.
-          </p>
-          <p>
-            The site is therefore, as of yet, written with
-            <a href="https://htmx.org/">htmx💜</a> and
-            <a href="https://tailwindcss.com/">Tailwind CSS</a> and is hosted on
-            <a href="https://pages.github.com/">GitHub Pages</a> as static files only.<br />
-            Source code freely available on my
-            <a href="https://github.com/bondii/Encyclopontus">GitHub repo</a>.
-          </p>
-          <p>
-            This approach lets me quickly get started with minimal setup while still
-            allowing those sweet partial page updates, and providing a wide range of
-            design options. I only have to commit HTML to the repo and GitHub Pages
-            automatically deploys it.
-          </p>
-          <p>
-            <br />
-            So far this feels fantastic, and I'm excited to see if I can build any
-            interesting UX using such a minimal setup. As far as future additions to the
-            tech stack goes, I'm interested in trying out
-            <a href="https://alpinejs.dev/">AlpineJS</a> for client state management, as
-            it ties in with the minimal approach of htmx.
-          </p>
-        </section>
-      </main>
+        class="flex-1 p-6 overflow-y-auto active max-w-[1150px]"
+      ></main>
     </div>
 
     <div class="fixed z-20 transform -translate-x-1/2 bottom-2 left-1/2 md:hidden">
@@ -253,48 +146,41 @@
     </div>
 
     <script>
-      function parsePageName(str) {
-        const lastSlashIndex = str.lastIndexOf('/')
-        if (lastSlashIndex === -1) {
-          // No slash found, return the whole string or handle as needed
-          return str
-        }
-        return str.substring(lastSlashIndex + 1)
+      function loadContent(pagePath) {
+        htmx.ajax('GET', pagePath, '#main-content')
       }
-
-      document.addEventListener('DOMContentLoaded', function () {
-        loadContentFromHash()
-        window.addEventListener('hashchange', loadContentFromHash, false)
-      })
 
       function loadContentFromHash() {
         let hash = window.location.hash.substring(1)
 
         if (!hash) {
-          return // index
+          loadContent('src/pages/home.html')
+          return
         }
 
-        const url = 'http://example.com/path/to/resource'
-        const pageName = parsePageName(hash)
+        const lastSlashIndex = hash.lastIndexOf('/')
+        const pageName = lastSlashIndex === -1 ? hash : hash.substring(lastSlashIndex + 1)
         let indexPath = `src/pages/${hash}/${pageName}.html`
         let hashPath = `src/pages/${hash}.html`
 
         fetch(indexPath)
-          .then(response => {
+          .then(async response => {
             if (response.ok) {
-              loadContent(indexPath)
+              //loadContent(indexPath)
+              document.getElementById('main-content').innerHTML = await response.text()
             } else {
               loadContent(hashPath)
             }
           })
           .catch(() => {
-            loadContent('index.html') // ToDoo: Replace with error page
+            loadContent('src/pages/home.html') // ToDoo: Replace with error page
           })
       }
 
-      function loadContent(pagePath) {
-        htmx.ajax('GET', pagePath, '#main-content')
-      }
+      document.addEventListener('DOMContentLoaded', function () {
+        loadContentFromHash()
+        window.addEventListener('hashchange', loadContentFromHash)
+      })
     </script>
 
     <script>
