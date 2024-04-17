@@ -8,6 +8,7 @@ module.exports = {
       colors: {},
       fontFamily: {
         organic: ['"Bad Script"', 'cursive'],
+        code: ['"Inconsolata"', 'monospace'],
       },
       boxShadow: {
         'glow-xl': '0 0 25px -5px rgb(0 0 0 / 0.1)',
