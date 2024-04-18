@@ -6,6 +6,10 @@
 npm install
 ```
 
+## Running the Application
+
+`npm run server`
+
 ## Building and Watching Tailwind CSS
 
 Tailwind CSS is a utility-first CSS framework that allows for highly customizable designs with low-level utility classes. The input file for Tailwind CSS can be found at `/src/styles.css`.
@@ -13,13 +17,13 @@ Tailwind CSS is a utility-first CSS framework that allows for highly customizabl
 You can build the Tailwind CSS using this npm script:
 
 ```sh
-npm run build:tailwind
+npm run tailwind:build
 ```
 
 To automatically rebuild the CSS file during development, use:
 
 ```sh
-npm run watch:tailwind
+npm run tailwind
 ```
 
 New to Tailwind? You're going to love it! Start reading here: [Tailwind CSS - Utility-First Fundamentals](https://tailwindcss.com/docs/utility-first)
@@ -36,8 +40,3 @@ htmx allows you to access AJAX, CSS Transitions, WebSockets and Server Sent Even
 In the package.json file, you'll find several npm scripts defined, here's what they do:
 
 - `tailwind` - Builds the Tailwind CSS file from the CSS source, watches for changes and rebuilds automatically.
-- `bumpPatch`, `bumpMinor`, `bumpMajor` - Use these to bump the version number of the project.
-
-## Running the Application
-
-`npm run server`

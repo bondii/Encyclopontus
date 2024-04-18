@@ -6,10 +6,7 @@
   "scripts": {
     "server": "live-server",
     "tailwind": "tailwindcss -i ./src/styles/styles.css -o ./static/stylesheet.css --watch",
-    "tailwind:build": "tailwindcss -i ./src/styles/styles.css -o ./static/stylesheet.css --minify",
-    "bumpPatch": "npm version patch --git-tag-version false",
-    "bumpMinor": "npm version minor --git-tag-version false",
-    "bumpMajor": "npm version major --git-tag-version false"
+    "tailwind:build": "tailwindcss -i ./src/styles/styles.css -o ./static/stylesheet.css --minify"
   },
   "devDependencies": {
     "@tailwindcss/forms": "^0.5.7",
