@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>CV | Pontus Eriksson</title>
+    <link rel="icon" href="/static/pontus.jpg" />
+
+    <script src="/static/htmx.min.js"></script>
+
+    <style>
+      body {
+        margin: 0px 64px 64px;
+        display: flex;
+        justify-content: space-around;
+      }
+
+      header {
+        color: #aa55ff;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: #aa55ff;
+      }
+
+      h1 {
+        font-size: xx-large;
+      }
+
+      article {
+        max-width: 900px;
+      }
+
+      section {
+        margin-top: 32px;
+        border-bottom: 1px solid #440088;
+        padding-bottom: 16px;
+      }
+
+      a {
+        text-decoration: none;
+        color: #cc88ff;
+      }
+    </style>
+  </head>
+  <body
+    bgcolor="#0f172a"
+    text="#f5f3ff"
+    hx-get="curriculum-vitae.html"
+    hx-trigger="load"
+    hx-swap="innerHTML"
+  ></body>
+</html>
