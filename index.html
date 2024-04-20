@@ -19,18 +19,19 @@
     <link rel="stylesheet" type="text/css" href="static/stylesheet.css" />
     <link rel="stylesheet" type="text/css" href="src/styles/rainbow-hover.css" />
   </head>
-  <body class="bg-slate-900 text-violet-50">
+  <body class="bg-slate-900 text-pink-50">
     <div class="w-screen h-screen overflow-x-hidden md:flex-row md:flex">
       <aside
         id="sidebar"
-        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full border-r md:w-80 md:translate-x-0 bg-slate-900 md:relative md:h-auto"
+        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full border-r bg-opacity-20 bg-slate-950 md:w-80 md:translate-x-0 md:relative md:h-auto"
       >
         <header class="p-0 mb-6 text-center border-b h-14">
           <h2 class="text-3xl font-bold rainbow-hover">
-            <a class="text-violet-800" href="#">
+            <a id="encyclopontus" class="text-pink-700 hover:text-violet-800" href="#">
               <!-- What do you _mean_ "not aesthetically pleasing"??
                    Make a PR for a more elegant solution, then!.. ;*
               -->
+              <!-- Encyclopontus -->
               <span>E</span><span>n</span><span>c</span><span>y</span><span>c</span
               ><span>l</span><span>o</span><span>p</span><span>o</span><span>n</span
               ><span>t</span><span>u</span><span>s</span>
@@ -38,7 +39,7 @@
           </h2>
         </header>
 
-        <nav>
+        <nav id="menu">
           <ul class="p-0 list-none">
             <li class="pb-2 mb-4 border-b">
               <a href="#liveography" class="font-bold">Live Autobiography</a>
@@ -157,14 +158,14 @@
       </aside>
 
       <div class="flex-1 w-full overflow-y-auto">
-        <main id="main-content" class="flex-1 p-6 active mx-auto max-w-[1150px]"></main>
+        <main id="main-content" class="flex-1 p-6 active mx-auto max-w-[1000px]"></main>
       </div>
     </div>
 
     <div class="fixed z-20 transform -translate-x-1/2 bottom-2 left-1/2 md:hidden">
       <button
         id="menu-toggle"
-        class="w-6 h-6 text-center text-purple-700 rounded-md bg-fuchsia-950"
+        class="w-6 h-6 text-center text-pink-500 rounded-md bg-pink-950"
       >
         <div>☰</div>
       </button>
