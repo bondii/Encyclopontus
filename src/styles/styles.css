@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 * {
-  @apply border-violet-950;
+  @apply border-pink-950;
 }
 
 article {
@@ -34,22 +34,25 @@ h4 {
 }
 
 h1 {
-  @apply text-4xl font-semibold text-violet-500;
+  @apply text-4xl font-semibold text-pink-600;
   @apply mb-2;
 }
 
 h2 {
-  @apply text-3xl font-semibold text-violet-400;
+  @apply text-3xl font-semibold text-pink-500;
   @apply mb-2;
 }
 
 h3 {
-  @apply text-2xl font-semibold text-violet-300;
+  @apply text-2xl font-semibold text-pink-400;
   @apply mb-1;
+}
+h3 a {
+  @apply text-pink-400;
 }
 
 h4 {
-  @apply text-lg font-bold text-violet-200;
+  @apply text-lg font-bold text-pink-400;
   @apply mb-0.5;
 }
 
@@ -58,7 +61,7 @@ code {
 }
 
 b {
-  @apply text-violet-200;
+  @apply text-pink-500;
 }
 
 p {
@@ -66,8 +69,16 @@ p {
 }
 
 a {
-  @apply text-violet-400;
-  @apply hover:text-violet-800;
+  @apply text-pink-300;
+  @apply hover:text-violet-600;
+  @apply transition-colors duration-500 ease-in-out;
+}
+a:hover {
+  @apply duration-200;
+}
+a:active {
+  @apply text-violet-800;
+  @apply transition-none;
 }
 
 ul {
@@ -84,13 +95,20 @@ nav ul li ul {
   @apply border-l;
   @apply list-none;
 }
-li ul li a {
+#menu a {
   @apply p-0;
+  @apply text-pink-500;
+}
+#menu a:hover {
+  @apply text-pink-900;
+}
+#menu a:active {
+  @apply text-violet-800;
 }
 
 blockquote {
-  @apply text-violet-300;
-  @apply border-violet-900;
+  @apply text-pink-300;
+  @apply border-pink-800;
   @apply border-l-4;
   @apply pl-4;
   @apply font-organic;
@@ -98,7 +116,13 @@ blockquote {
 }
 
 blockquote b {
-  @apply text-violet-500;
+  @apply text-pink-500;
+}
+
+.author {
+  @apply text-pink-400;
+  @apply float-right;
+  @apply not-italic;
 }
 
 /* Hidden by default on mobile */
