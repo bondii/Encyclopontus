@@ -26,6 +26,13 @@ article h1:first-child {
   @apply pb-4 mb-8 border-b w-fit;
 }
 
+h1,
+h2,
+h3,
+h4 {
+  @apply mt-3;
+}
+
 h1 {
   @apply text-4xl font-semibold text-violet-500;
   @apply mb-2;
@@ -38,7 +45,7 @@ h2 {
 
 h3 {
   @apply text-2xl font-semibold text-violet-300;
-  @apply my-1;
+  @apply mb-1;
 }
 
 h4 {
