@@ -23,7 +23,7 @@
     <div class="w-screen h-screen overflow-x-hidden md:flex-row md:flex">
       <aside
         id="sidebar"
-        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full border-r bg-opacity-20 bg-slate-950 md:w-80 md:translate-x-0 md:relative md:h-auto"
+        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full border-r bg-slate-950 md:w-80 md:translate-x-0 md:relative md:h-auto"
       >
         <header class="p-0 mb-6 text-center border-b h-14">
           <h2 class="text-3xl font-bold rainbow-hover">
@@ -157,8 +157,15 @@
         </nav>
       </aside>
 
-      <div class="flex-1 w-full overflow-y-auto">
-        <main id="main-content" class="flex-1 p-6 active mx-auto max-w-[1000px]"></main>
+      <div class="flex-1 w-full h-full overflow-y-auto">
+        <div class="flex w-full min-h-screen h-fit">
+          <div class="flex-grow bg-gradient-to-r from-slate-950 to-slate-900"></div>
+          <main
+            id="main-content"
+            class="flex-shrink h-fit p-6 active mx-auto max-w-[1000px]"
+          ></main>
+          <div class="flex-grow bg-gradient-to-r from-slate-900 to-slate-950"></div>
+        </div>
       </div>
     </div>
 
