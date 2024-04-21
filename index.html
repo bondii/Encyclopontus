@@ -23,11 +23,15 @@
     <div class="w-screen h-screen overflow-x-hidden md:flex-row md:flex">
       <aside
         id="sidebar"
-        class="fixed w-full h-full p-6 overflow-y-auto transform -translate-x-full border-r bg-slate-950 md:w-80 md:translate-x-0 md:relative md:h-auto"
+        class="fixed flex flex-col w-full h-full transform -translate-x-full border-r md:relative bg-slate-950 md:w-80 md:translate-x-0"
       >
-        <header class="p-0 mb-6 text-center border-b h-14">
-          <h2 class="text-3xl font-bold rainbow-hover">
-            <a id="encyclopontus" class="text-pink-600 hover:text-violet-800" href="#">
+        <header class="px-0 py-4 mx-6 my-0 text-center border-b flex-0">
+          <h2 class="font-bold rainbow-hover bg-slate-950">
+            <a
+              id="encyclopontus"
+              class="text-pink-600 hover:text-violet-800 active:text-violet-500"
+              href="#"
+            >
               <!-- What do you _mean_ "not aesthetically pleasing"??
                    Make a PR for a more elegant solution, then!.. ;*
               -->
@@ -39,8 +43,11 @@
           </h2>
         </header>
 
-        <nav id="menu">
-          <ul class="p-0 list-none">
+        <nav id="menu" class="flex-1 px-6 pb-4 overflow-y-auto">
+          <div
+            class="sticky top-0 h-5 mb-[-8px] opacity-80 bg-gradient-to-t from-transparent to-slate-950"
+          ></div>
+          <ul class="p-0 list-none h-fit">
             <li class="pb-2 mb-4 border-b">
               <a href="#liveography" class="font-bold">Live Autobiography</a>
 
