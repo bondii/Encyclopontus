@@ -1,0 +1,138 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        
+            <script src="lib/bindings/utils.js"></script>
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/dist/vis-network.min.css" integrity="sha512-WgxfT5LWjfszlPHXRmBWHkV2eceiWTOBvrKCNbdgDYTHrT2AeLCGbF4sZlZw3UMN3WtL0tGUoIAKsu8mllg/XA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/vis-network/9.1.2/dist/vis-network.min.js" integrity="sha512-LnvoEWDFrqGHlHmDD2101OrLcbsfkrzoSpvtSQtxK3RMnRV0eOkhhBN2dXHKRrUU8p2DGRTk35n4O8nWSVe1mQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+            
+        
+<center>
+<h1></h1>
+</center>
+
+<!-- <link rel="stylesheet" href="../node_modules/vis/dist/vis.min.css" type="text/css" />
+<script type="text/javascript" src="../node_modules/vis/dist/vis.js"> </script>-->
+        <link
+          href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css"
+          rel="stylesheet"
+          integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6"
+          crossorigin="anonymous"
+        />
+        <script
+          src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js"
+          integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf"
+          crossorigin="anonymous"
+        ></script>
+
+
+        <center>
+          <h1></h1>
+        </center>
+        <style type="text/css">
+
+             #mynetwork {
+                 width: 100%;
+                 height: 500px;
+                 background-color: #2B2B2B;
+                 border: 1px solid lightgray;
+                 position: relative;
+                 float: left;
+             }
+
+             
+
+             
+
+             
+        </style>
+    
+    <style>
+        body {
+            overflow: hidden;
+        }
+        #mynetwork {
+            border: none !important;
+        }
+    </style>
+    
+  <link rel="stylesheet" href="static/stylesheet.css">
+</head>
+
+
+    <body>
+        <div class="card" style="width: 100%">
+            
+            
+            <div id="mynetwork" class="card-body"></div>
+        </div>
+
+        
+        
+
+        <script type="text/javascript">
+
+              // initialize global variables.
+              var edges;
+              var nodes;
+              var allNodes;
+              var allEdges;
+              var nodeColors;
+              var originalNodes;
+              var network;
+              var container;
+              var options, data;
+              var filter = {
+                  item : '',
+                  property : '',
+                  value : []
+              };
+
+              
+
+              
+
+              // This method is responsible for drawing the graph, returns the drawn network
+              function drawGraph() {
+                  var container = document.getElementById('mynetwork');
+
+                  
+
+                  // parsing and collecting nodes and edges from the python
+                  nodes = new vis.DataSet([{"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/home.html", "id": "src/pages/home.html", "label": "Welcome to myDigitalGarden!", "shape": "dot", "size": 10, "title": "Welcome to myDigitalGarden!", "url": "src/pages/home.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/loose-leaves.html", "id": "src/pages/loose-leaves.html", "label": "\ud83c\udf43 Loose Leaves", "shape": "dot", "size": 10, "title": "\ud83c\udf43 Loose Leaves", "url": "src/pages/loose-leaves.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/past-pontus.html", "id": "src/pages/pontus/past-pontus.html", "label": "\ud83c\udf31 Past Pontus", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Past Pontus", "url": "src/pages/pontus/past-pontus.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/future-pontus.html", "id": "src/pages/pontus/future-pontus.html", "label": "\ud83c\udf31 Future Pontus", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Future Pontus", "url": "src/pages/pontus/future-pontus.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/pontus.html", "id": "src/pages/pontus/pontus.html", "label": "\ud83c\udf31 Pontus", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Pontus", "url": "src/pages/pontus/pontus.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/johari.html", "id": "src/pages/pontus/johari.html", "label": "\ud83c\udf31 Johari window of Pontus", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Johari window of Pontus", "url": "src/pages/pontus/johari.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/self-improvement.html", "id": "src/pages/pontus/self-improvement.html", "label": "\ud83c\udf31 Self Improvement", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Self Improvement", "url": "src/pages/pontus/self-improvement.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/present-pontus.html", "id": "src/pages/pontus/present-pontus.html", "label": "present-pontus", "shape": "dot", "size": 10, "title": "present-pontus", "url": "src/pages/pontus/present-pontus.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/emoception.html", "id": "src/pages/pontus/emoception.html", "label": "emoception", "shape": "dot", "size": 10, "title": "emoception", "url": "src/pages/pontus/emoception.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/curriculum-vitae-pontus-eriksson.html", "id": "src/pages/pontus/curriculum-vitae-pontus-eriksson.html", "label": "curriculum-vitae-pontus-eriksson", "shape": "dot", "size": 10, "title": "curriculum-vitae-pontus-eriksson", "url": "src/pages/pontus/curriculum-vitae-pontus-eriksson.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/curriculum-vitae.html", "id": "src/pages/pontus/curriculum-vitae.html", "label": "Curriculum Vitae", "shape": "dot", "size": 10, "title": "Curriculum Vitae", "url": "src/pages/pontus/curriculum-vitae.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "index.html", "id": "index.html", "label": "index", "shape": "dot", "size": 10, "title": "index", "url": "index.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/liveography/liveography.html", "id": "src/pages/liveography/liveography.html", "label": "Liveography", "shape": "dot", "size": 10, "title": "Liveography", "url": "src/pages/liveography/liveography.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/liveography/abroad-2024/abroad-2024.html", "id": "src/pages/liveography/abroad-2024/abroad-2024.html", "label": "Abroad Living 2024", "shape": "dot", "size": 10, "title": "Abroad Living 2024", "url": "src/pages/liveography/abroad-2024/abroad-2024.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/inherently-cool.html", "id": "src/pages/inherently-cool.html", "label": "\ud83e\udd16 Inherently cool phenomena", "shape": "dot", "size": 10, "title": "\ud83e\udd16 Inherently cool phenomena", "url": "src/pages/inherently-cool.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/programming.html", "id": "src/pages/programming.html", "label": "\ud83e\udeb4Programming", "shape": "dot", "size": 10, "title": "\ud83e\udeb4Programming", "url": "src/pages/programming.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/regrets.html", "id": "src/pages/regrets.html", "label": "\ud83e\udeb4Regrets", "shape": "dot", "size": 10, "title": "\ud83e\udeb4Regrets", "url": "src/pages/regrets.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/meditation.html", "id": "src/pages/meditation.html", "label": "\ud83e\udeb4Meditation", "shape": "dot", "size": 10, "title": "\ud83e\udeb4Meditation", "url": "src/pages/meditation.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/sociology/sociology.html", "id": "src/pages/sociology/sociology.html", "label": "\ud83c\udf31 Sociology", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Sociology", "url": "src/pages/sociology/sociology.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/rave.html", "id": "src/pages/rave.html", "label": "\ud83c\udf31 Rave", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Rave", "url": "src/pages/rave.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/seeds.html", "id": "src/pages/seeds.html", "label": "~ Seeds yet to be Planted ~", "shape": "dot", "size": 10, "title": "~ Seeds yet to be Planted ~", "url": "src/pages/seeds.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/temperance/temperance.html", "id": "src/pages/temperance/temperance.html", "label": "\ud83c\udf31 Temperance", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Temperance", "url": "src/pages/temperance/temperance.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/mindful-routines.html", "id": "src/pages/mindful-routines.html", "label": "\ud83e\udeb4Mindfulness vs. Routine", "shape": "dot", "size": 10, "title": "\ud83e\udeb4Mindfulness vs. Routine", "url": "src/pages/mindful-routines.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/life-stance/life-stance.html", "id": "src/pages/pontus/life-stance/life-stance.html", "label": "\ud83c\udf32Life stance", "shape": "dot", "size": 10, "title": "\ud83c\udf32Life stance", "url": "src/pages/pontus/life-stance/life-stance.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/liveography/abroad-2024/reflection.html", "id": "src/pages/liveography/abroad-2024/reflection.html", "label": "Reflecting thoughts \u0026 feelings", "shape": "dot", "size": 10, "title": "Reflecting thoughts \u0026 feelings", "url": "src/pages/liveography/abroad-2024/reflection.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/liveography/abroad-2024/sprained-ankle.html", "id": "src/pages/liveography/abroad-2024/sprained-ankle.html", "label": "Close to ending the entire #!", "shape": "dot", "size": 10, "title": "Close to ending the entire #!", "url": "src/pages/liveography/abroad-2024/sprained-ankle.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/liveography/abroad-2024/porto-2024.html", "id": "src/pages/liveography/abroad-2024/porto-2024.html", "label": "Porto ~ 2024-02-13 -\u003e 2024-03-01", "shape": "dot", "size": 10, "title": "Porto ~ 2024-02-13 -\u003e 2024-03-01", "url": "src/pages/liveography/abroad-2024/porto-2024.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/liveography/abroad-2024/madeira-2024.html", "id": "src/pages/liveography/abroad-2024/madeira-2024.html", "label": "Madeira ~ 2024-03-01 -\u003e 2024-04-02", "shape": "dot", "size": 10, "title": "Madeira ~ 2024-03-01 -\u003e 2024-04-02", "url": "src/pages/liveography/abroad-2024/madeira-2024.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/liveography/abroad-2024/berlin-2023.html", "id": "src/pages/liveography/abroad-2024/berlin-2023.html", "label": "\ud83c\udf31 Berlin ~ 2023-11-14 ~\u003e 2024-01-09", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Berlin ~ 2023-11-14 ~\u003e 2024-01-09", "url": "src/pages/liveography/abroad-2024/berlin-2023.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/liveography/abroad-2024/barcelona-2024.html", "id": "src/pages/liveography/abroad-2024/barcelona-2024.html", "label": "\ud83c\udf31 Barcelona ~ 2024-01-09 -\u003e 2024-02-13", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Barcelona ~ 2024-01-09 -\u003e 2024-02-13", "url": "src/pages/liveography/abroad-2024/barcelona-2024.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/hand-in-grain.html", "id": "src/pages/hand-in-grain.html", "label": "\ud83e\udd16 Hand-in-grain moments", "shape": "dot", "size": 10, "title": "\ud83e\udd16 Hand-in-grain moments", "url": "src/pages/hand-in-grain.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/sociology/sociodrink.html", "id": "src/pages/sociology/sociodrink.html", "label": "\ud83e\udeb4Alcohol as a Social Lubricant", "shape": "dot", "size": 10, "title": "\ud83e\udeb4Alcohol as a Social Lubricant", "url": "src/pages/sociology/sociodrink.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/temperance/snus.html", "id": "src/pages/temperance/snus.html", "label": "\ud83e\udeb4Snus", "shape": "dot", "size": 10, "title": "\ud83e\udeb4Snus", "url": "src/pages/temperance/snus.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/pontus/life-stance/veganism.html", "id": "src/pages/pontus/life-stance/veganism.html", "label": "\ud83c\udf31Veganism", "shape": "dot", "size": 10, "title": "\ud83c\udf31Veganism", "url": "src/pages/pontus/life-stance/veganism.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/time.html", "id": "src/pages/time.html", "label": "\ud83c\udf31 Time", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Time", "url": "src/pages/time.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/music.html", "id": "src/pages/music.html", "label": "\ud83c\udf31 Music", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Music", "url": "src/pages/music.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/happiness.html", "id": "src/pages/happiness.html", "label": "\ud83c\udf31 Happiness", "shape": "dot", "size": 10, "title": "\ud83c\udf31 Happiness", "url": "src/pages/happiness.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "graph.html", "id": "graph.html", "label": "graph.html", "shape": "dot", "size": 10, "title": "graph.html", "url": "graph.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/blueprint-future.html", "id": "src/pages/blueprint-future.html", "label": "blueprint-future", "shape": "dot", "size": 10, "title": "blueprint-future", "url": "src/pages/blueprint-future.html"}, {"color": "#97c2fc", "font": {"color": "white"}, "href": "src/pages/fort.html", "id": "src/pages/fort.html", "label": "My Fort, a.k.a. my apartment", "shape": "dot", "size": 10, "title": "My Fort, a.k.a. my apartment", "url": "src/pages/fort.html"}]);
+                  edges = new vis.DataSet([{"arrows": "to", "from": "src/pages/home.html", "to": "src/pages/loose-leaves.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/past-pontus.html", "to": "src/pages/pontus/future-pontus.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/pontus.html", "to": "src/pages/pontus/johari.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/pontus.html", "to": "src/pages/pontus/self-improvement.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/pontus.html", "to": "src/pages/pontus/present-pontus.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/pontus.html", "to": "src/pages/pontus/emoception.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/pontus.html", "to": "src/pages/pontus/curriculum-vitae-pontus-eriksson.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/pontus.html", "to": "src/pages/pontus/past-pontus.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/pontus.html", "to": "src/pages/pontus/future-pontus.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/pontus.html", "to": "src/pages/pontus/curriculum-vitae.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/home.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/liveography/liveography.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/pontus/pontus.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/liveography/abroad-2024/abroad-2024.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/inherently-cool.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/programming.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/regrets.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/meditation.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/sociology/sociology.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/rave.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/seeds.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/temperance/temperance.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/mindful-routines.html", "width": 1}, {"arrows": "to", "from": "index.html", "to": "src/pages/pontus/life-stance/life-stance.html", "width": 1}, {"arrows": "to", "from": "src/pages/liveography/abroad-2024/abroad-2024.html", "to": "src/pages/liveography/abroad-2024/reflection.html", "width": 1}, {"arrows": "to", "from": "src/pages/liveography/abroad-2024/abroad-2024.html", "to": "src/pages/liveography/abroad-2024/sprained-ankle.html", "width": 1}, {"arrows": "to", "from": "src/pages/liveography/abroad-2024/abroad-2024.html", "to": "src/pages/liveography/abroad-2024/porto-2024.html", "width": 1}, {"arrows": "to", "from": "src/pages/liveography/abroad-2024/abroad-2024.html", "to": "src/pages/liveography/abroad-2024/madeira-2024.html", "width": 1}, {"arrows": "to", "from": "src/pages/liveography/abroad-2024/abroad-2024.html", "to": "src/pages/liveography/abroad-2024/berlin-2023.html", "width": 1}, {"arrows": "to", "from": "src/pages/liveography/abroad-2024/abroad-2024.html", "to": "src/pages/liveography/abroad-2024/barcelona-2024.html", "width": 1}, {"arrows": "to", "from": "src/pages/inherently-cool.html", "to": "src/pages/hand-in-grain.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/future-pontus.html", "to": "src/pages/pontus/past-pontus.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/future-pontus.html", "to": "src/pages/pontus/present-pontus.html", "width": 1}, {"arrows": "to", "from": "src/pages/sociology/sociology.html", "to": "src/pages/sociology/sociodrink.html", "width": 1}, {"arrows": "to", "from": "src/pages/temperance/temperance.html", "to": "src/pages/temperance/snus.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/life-stance/life-stance.html", "to": "src/pages/inherently-cool.html", "width": 1}, {"arrows": "to", "from": "src/pages/pontus/life-stance/life-stance.html", "to": "src/pages/pontus/life-stance/veganism.html", "width": 1}]);
+
+                  nodeColors = {};
+                  allNodes = nodes.get({ returnType: "Object" });
+                  for (nodeId in allNodes) {
+                    nodeColors[nodeId] = allNodes[nodeId].color;
+                  }
+                  allEdges = edges.get({ returnType: "Object" });
+                  // adding nodes and edges to the graph
+                  data = {nodes: nodes, edges: edges};
+
+                  var options = {"nodes": {"font": {"size": 14, "color": "white"}, "color": {"background": "#4A90E2", "border": "#1C1C1C", "highlight": {"background": "#50E3C2", "border": "#1C1C1C"}}, "shape": "dot", "size": 20}, "edges": {"color": {"color": "#AAAAAA", "highlight": "#FFFFFF"}, "arrows": {"to": {"enabled": true, "scaleFactor": 0.5, "type": "arrow"}}, "smooth": {"enabled": true, "type": "dynamic"}}, "physics": {"enabled": true, "barnesHut": {"gravitationalConstant": -2000, "centralGravity": 0.4, "springLength": 100, "springConstant": 0.04, "damping": 0.09, "avoidOverlap": 1}, "minVelocity": 0.5, "solver": "barnesHut"}, "interaction": {"hover": true, "navigationButtons": false, "keyboard": false}};
+
+                  
+
+
+                  
+
+                  network = new vis.Network(container, data, options);
+
+                  
+
+                  
+
+                  
+
+
+                  
+
+                  return network;
+
+              }
+              drawGraph();
+        </script>
+    </body>
+</html>
