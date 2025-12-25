@@ -2,7 +2,7 @@
 
 This is an extremely lightweight and simplistic setup for a personal wiki a.k.a. "Digital Garden", using barebone HTML, htmx, and Tailwind/CSS. GitHub Pages serves the site as static content only, and automatically deploys on pushes to `master`.
 
-Most source files are just HTML. The most interesting part is the <a href="https://github.com/bondii/Encyclopontus/blob/master/index.html">`index.html`</a> file in this root directory, in which the menu as well as some custom JavaScript for URL routing is defined.
+Most source files are just HTML. The most interesting part is the <a href="https://github.com/bondii/Encyclopontus/blob/master/index.html">`index.html`</a> file in this root directory, in which the menu as well as some custom JavaScript for URL routing is defined. Content pages live in `src/pages/<route>/index.html`, with `static/curriculum-vitae-pontus-eriksson.html` as the intentional standalone exception.
 
 ## Installation
 
@@ -16,7 +16,7 @@ npm install
 
 ## Building and Watching Tailwind CSS
 
-Tailwind CSS is a utility-first CSS framework that allows for highly customizable designs with low-level utility classes. The input file for Tailwind CSS can be found at `/src/styles.css`.
+Tailwind CSS is a utility-first CSS framework that allows for highly customizable designs with low-level utility classes. The input file for Tailwind CSS can be found at `src/styles/styles.css`.
 
 You can build the Tailwind CSS using this npm script:
 
@@ -40,4 +40,4 @@ htmx allows you to access AJAX, CSS Transitions, WebSockets and Server Sent Even
 - [htmx in a Nutshell](https://htmx.org/docs/#introduction)
 - [htmx Reference](https://htmx.org/reference/)
 
-Now, to be completely fair and transparent I will warn you that I am using an unnecessarily complicated way of loading the content of the pages as a simple way of handling URL routing when deploying the site with GitHub Pages. It shouldn't be that difficult to figure out just looking in the <a href="https://github.com/bondii/Encyclopontus/blob/master/index.html">`index.html`</a> anyways, but if anything is unclear feel free to ask me and I'll happily try to explain.
+Routing is hash-based in <a href="https://github.com/bondii/Encyclopontus/blob/master/index.html">`index.html`</a>: each `#route` maps to `src/pages/<route>/index.html`. If anything is unclear feel free to ask me and I'll happily try to explain.
