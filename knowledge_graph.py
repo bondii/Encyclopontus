@@ -121,7 +121,7 @@ def find_html_files(root_dir, exclude_untracked=False):
 def get_page_title(file_path):
     """
     Extracts the text from the first <h1> tag in the HTML file.
-    Returns the title or the filename without extension as a fallback.
+    Returns the title or a fallback based on the file path.
     """
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
@@ -132,7 +132,11 @@ def get_page_title(file_path):
             return h1_tag.get_text(strip=True)
     except Exception as e:
         print(f"Error reading {file_path}: {e}", file=sys.stderr)
-    return os.path.splitext(os.path.basename(file_path))[0]  # Fallback to filename without extension
+    filename = os.path.basename(file_path)
+    if filename.lower() == 'index.html':
+        parent_dir = os.path.basename(os.path.dirname(file_path))
+        return parent_dir or 'index'
+    return os.path.splitext(filename)[0]  # Fallback to filename without extension
 
 def extract_links(html_file, root_dir, html_files_set):
     """
@@ -303,6 +307,18 @@ def build_graph(root_dir, exclude_untracked=False):
 
     return G
 
+def build_node_url(node_id, output_file):
+    node_posix = node_id.replace("\\", "/")
+    output_dir = os.path.dirname(output_file) or '.'
+
+    if node_posix.startswith('src/pages/') and node_posix.endswith('/index.html'):
+        route = node_posix[len('src/pages/'):-len('/index.html')]
+        index_href = os.path.relpath('index.html', output_dir).replace("\\", "/")
+        return f'{index_href}#{route}'
+
+    return os.path.relpath(node_id, output_dir).replace("\\", "/")
+
+
 def visualize_graph(G, output_file=OUTPUT_FILE_DEFAULT):
     """
     Visualizes the directed graph using PyVis with dark mode and clickable nodes.
@@ -370,7 +386,9 @@ def visualize_graph(G, output_file=OUTPUT_FILE_DEFAULT):
 
     # Add URLs to nodes for clicking
     for node in net.nodes:
-        node['href'] = node['url']
+        node_url = build_node_url(node['id'], output_file)
+        node['url'] = node_url
+        node['href'] = node_url
         node['title'] = node['label']  # Tooltip
 
     # Display the graph
@@ -395,6 +413,23 @@ def visualize_graph(G, output_file=OUTPUT_FILE_DEFAULT):
 
     # Insert the CSS link before </head>
     content = content.replace('</head>', '  <link rel="stylesheet" href="static/stylesheet.css">\n</head>')
+
+    click_handler = """
+    <script>
+        if (typeof network !== 'undefined') {
+            network.on('click', function (params) {
+                if (!params.nodes || params.nodes.length !== 1) {
+                    return
+                }
+                var node = nodes.get(params.nodes[0])
+                if (node && node.url) {
+                    window.top.location.href = node.url
+                }
+            })
+        }
+    </script>
+    """
+    content = content.replace('</body>', f'{click_handler}\n</body>')
 
     with open(output_file, 'w', encoding='utf-8') as f:
         f.write(content)
