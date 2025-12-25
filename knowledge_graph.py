@@ -158,38 +158,20 @@ def extract_links(html_file, root_dir, html_files_set):
             # Process hash links
             hash_value = href[1:]  # Remove the '#' character
             if not hash_value:
-                # Empty hash, map to 'home.html' in root_dir
-                target = os.path.normpath(os.path.join(root_dir, 'src', 'pages', 'home.html'))
+                # Empty hash, map to the home page
+                target = os.path.normpath(os.path.join(root_dir, 'src', 'pages', 'home', 'index.html'))
                 href_rel_path = os.path.relpath(target, root_dir)
                 href_rel_path = os.path.normpath(href_rel_path)
                 if href_rel_path in html_files_set:
                     links.add(href_rel_path)
                 continue
-            # Replicate your JavaScript logic
-            last_slash_index = hash_value.rfind('/')
-            page_name = hash_value if last_slash_index == -1 else hash_value[last_slash_index + 1:]
-            indexPath = os.path.normpath(os.path.join(root_dir, 'src', 'pages', hash_value, f'{page_name}.html'))
-            hashPath = os.path.normpath(os.path.join(root_dir, 'src', 'pages', f'{hash_value}.html'))
-            # Check if these files exist
-            indexPath_rel = os.path.relpath(indexPath, root_dir)
-            indexPath_rel = os.path.normpath(indexPath_rel)
-            hashPath_rel = os.path.relpath(hashPath, root_dir)
-            hashPath_rel = os.path.normpath(hashPath_rel)
-            if indexPath_rel in html_files_set:
-                links.add(indexPath_rel)
-            elif hashPath_rel in html_files_set:
-                links.add(hashPath_rel)
-            else:
-                # Also check for files with the same name as the directory
-                dir_name = os.path.basename(hash_value)
-                dirPath = os.path.normpath(os.path.join(root_dir, 'src', 'pages', hash_value, f'{dir_name}.html'))
-                dirPath_rel = os.path.relpath(dirPath, root_dir)
-                dirPath_rel = os.path.normpath(dirPath_rel)
-                if dirPath_rel in html_files_set:
-                    links.add(dirPath_rel)
-                else:
-                    # File not found, ignore or handle accordingly
-                    pass
+            # Match the client-side routing logic: src/pages/<route>/index.html
+            index_path = os.path.normpath(os.path.join(root_dir, 'src', 'pages', hash_value, 'index.html'))
+            index_path_rel = os.path.relpath(index_path, root_dir)
+            index_path_rel = os.path.normpath(index_path_rel)
+            if index_path_rel in html_files_set:
+                links.add(index_path_rel)
+            continue
         else:
             # Process normal links
             if parsed_href.scheme != '' or parsed_href.netloc != '':
@@ -277,25 +259,20 @@ def build_graph(root_dir, exclude_untracked=False):
         dir_rel_path = os.path.relpath(dirpath, root_dir)
         dir_rel_path = os.path.normpath(dir_rel_path)
 
-        # Get the directory name
-        dir_name = os.path.basename(dirpath)
-
-        # Define the expected parent filename (same as directory name)
-        parent_filename = f"{dir_name}.html"
+        # Define the expected parent filename for routed pages
+        parent_filename = 'index.html'
 
         # Check if the parent file exists in this directory
         if parent_filename in filenames:
             parent_rel_path = os.path.normpath(os.path.join(dir_rel_path, parent_filename))
             if parent_rel_path in html_files_set:
-                # Iterate through all HTML files in this directory
-                for child_filename in filenames:
-                    if child_filename.lower().endswith('.html') or child_filename.lower().endswith('.htm'):
-                        if child_filename == parent_filename:
-                            continue  # Skip the parent itself
-                        child_rel_path = os.path.normpath(os.path.join(dir_rel_path, child_filename))
-                        if child_rel_path in html_files_set:
-                            G.add_edge(parent_rel_path, child_rel_path)
-                            children_of_parents.add(child_rel_path)
+                for child_dir in dirnames:
+                    child_rel_path = os.path.normpath(
+                        os.path.join(dir_rel_path, child_dir, 'index.html')
+                    )
+                    if child_rel_path in html_files_set:
+                        G.add_edge(parent_rel_path, child_rel_path)
+                        children_of_parents.add(child_rel_path)
                 #print(f"Added parent-to-children edges for: {parent_rel_path}")
 
     # ----------------------------

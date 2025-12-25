@@ -200,35 +200,32 @@
     </div>
 
     <script>
-      function loadContent(pagePath) {
-        htmx.ajax('GET', pagePath, '#main-content')
+      const defaultRoute = 'home'
+
+      function resolvePagePath(route) {
+        const safeRoute = route || defaultRoute
+        return `src/pages/${safeRoute}/index.html`
       }
 
-      function loadContentFromHash() {
-        let hash = window.location.hash.substring(1)
+      async function loadContentFromHash() {
+        const hash = window.location.hash.substring(1)
+        const pagePath = resolvePagePath(hash)
 
-        if (!hash) {
-          loadContent('src/pages/home.html')
-          return
+        try {
+          const response = await fetch(pagePath)
+          if (!response.ok) {
+            throw new Error('Page not found')
+          }
+          document.getElementById('main-content').innerHTML = await response.text()
+        } catch (error) {
+          document.getElementById('main-content').innerHTML = `
+            <article>
+              <h1>Not found</h1>
+              <p>That page does not exist yet. Try a link from the menu instead.</p>
+              <p><a href="#">Return home</a></p>
+            </article>
+          `
         }
-
-        const lastSlashIndex = hash.lastIndexOf('/')
-        const pageName = lastSlashIndex === -1 ? hash : hash.substring(lastSlashIndex + 1)
-        let indexPath = `src/pages/${hash}/${pageName}.html`
-        let hashPath = `src/pages/${hash}.html`
-
-        fetch(indexPath)
-          .then(async response => {
-            if (response.ok) {
-              //loadContent(indexPath)
-              document.getElementById('main-content').innerHTML = await response.text()
-            } else {
-              loadContent(hashPath)
-            }
-          })
-          .catch(() => {
-            loadContent('src/pages/home.html') // ToDoo: Replace with error page
-          })
       }
 
       document.addEventListener('DOMContentLoaded', function () {

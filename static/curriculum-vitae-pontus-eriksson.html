@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <title>CV | Pontus Eriksson</title>
-    <link rel="icon" href="/static/pontus.jpg" />
+    <base href="../" />
+    <link rel="icon" href="static/pontus.jpg" />
 
-    <script src="/static/htmx.min.js"></script>
+    <script src="static/htmx.min.js"></script>
 
     <style>
       body {
@@ -47,7 +48,7 @@
   <body
     bgcolor="#0f172a"
     text="#f5f3ff"
-    hx-get="curriculum-vitae.html"
+    hx-get="src/pages/pontus/curriculum-vitae/index.html"
     hx-trigger="load"
     hx-swap="innerHTML"
   ></body>
