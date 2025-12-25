@@ -1,6 +1,6 @@
 # Encyclopontus
 
-This is an extremely lightweight and simplistic setup for a personal wiki a.k.a. "Digital Garden", using barebone HTML, htmx, and Tailwind/CSS. GitHub Pages serves the site as static content only, and automatically deploys on pushes to `master`.
+This is an extremely lightweight and simplistic setup for a personal wiki a.k.a. "Digital Garden", using barebones HTML, htmx, and Tailwind/CSS. GitHub Pages serves the site as static content only, and automatically deploys on pushes to `master`.
 
 Most source files are just HTML. The most interesting part is the <a href="https://github.com/bondii/Encyclopontus/blob/master/index.html">`index.html`</a> file in this root directory, in which the menu as well as some custom JavaScript for URL routing is defined. Content pages live in `src/pages/<route>/index.html`, with `static/curriculum-vitae-pontus-eriksson.html` as the intentional standalone exception.
 
