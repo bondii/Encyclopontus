@@ -1,1 +1,10 @@
-node_modules
+lib
+
+# Python
+node_modules/
+
+# Nix
+.devenv
+.direnv
+.envrc
+
